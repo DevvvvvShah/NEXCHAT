@@ -15,7 +15,8 @@ require("dotenv").config();
 
 
 //middlewares used 
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 
@@ -65,10 +66,11 @@ const server = app.listen(PORT, () =>
 
 const io = socket(server, {
   cors: {
-    origin: ["http://localhost:3000"],
+    origin: "*",
     credentials: true,
   },
 });
+
 
 global.onlineUsers = new Map();
 
